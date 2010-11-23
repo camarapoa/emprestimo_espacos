@@ -1,0 +1,75 @@
+<h3>Detalhes da Solicitação de Empréstimo</h3>
+
+<br/>
+<table id='actions'>
+	<tr>		
+		<% if @emprestimo.status == 'por_atender '%>
+			<td><%= link_to 'cancelar solicitacao', @emprestimo, :icon => 'cancel', :title => "detalhes do empréstimo" %></td>             
+		<% end %>			
+  	<% if !['cancelado', 'nao_autorizado'].include?(@emprestimo.status)  && (@emprestimo.data_inicio > Time.now)  %>
+      <td><%= link_to 'solicitar cancelamento', solicitar_cancelamento_emprestimo_path(@emprestimo), :method => :put, :icon => 'cancel', :title => "detalhes do empréstimo" %></td>             
+    <% end %>	
+	</tr>
+</table>
+<br/>
+
+<table class='attributes'>	
+	<tr>
+    <th>Local:</th>
+    <td><%= @emprestimo.espaco.nome %></td>
+  </tr>  	
+  <tr>
+    <th>Data de Utilização:</th>
+    <td><%= "#{@emprestimo.data_inicio.strftime('%d/%m/%Y')} - de #{@emprestimo.horario_inicio} às #{@emprestimo.horario_termino}" %></td>
+  </tr>
+  <tr>
+    <th>Descrição:</th>
+    <td><%= @emprestimo.descricao %></td>
+  </tr>
+ <tr>
+    <th>Necessidades:</th>
+    <td><%= @emprestimo.necessidades %></td>
+  </tr>    
+  <tr>
+    <th>Status:</th>
+    <td><%= @emprestimo.status_real.humanize %></td>
+  </tr>  
+  <% if @emprestimo.status == 'nao_autorizado' %>
+  <tr>
+    <th>Justificativa:</th>
+    <td><%= @emprestimo.resultado %></td>
+  </tr>
+  <% end %>  
+  <% if @emprestimo.status == 'aguardando_autorizacao_superior' %>
+  <tr>
+    <th>Mensagem ao Supervisor:</th>
+    <td><%= @emprestimo.mensagem_ao_super %></td>
+  </tr>
+  <% end %>
+  <% if @emprestimo.status == 'autorizado_por_superior' %>
+  <tr>
+    <th>Mensagem do Superior:</th>
+    <td><%= @emprestimo.resultado %></td>
+  </tr>
+  <% end %>
+  <tr>  	
+    <th>Proponente:</th>
+    <td><%= @emprestimo.proponente %></td>
+  </tr> 
+  <tr>
+    <th>Contato:</th>
+    <td><%= @emprestimo.contato %></td>
+  </tr>   
+  <tr>
+    <th>Funcionario Solicitante:</th>
+    <td><%= @emprestimo.funcionario_solicitante.nome %></td>
+  </tr>  
+  <tr>
+    <th>Setor Solicitante:</th>
+    <td><%= @emprestimo.setor_solicitante.nome %></td>
+  </tr>    
+</table>  
+
+<%= auditoria_atualizacao(@emprestimo)%>
+<br/>
+<%= link_to "Retornar", back_path_or(emprestimos_path), :icon => "arrow-left" %>

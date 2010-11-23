@@ -1,0 +1,69 @@
+<%= f.error_messages %>
+<table class='fieldset'>
+<tr>
+  <td><%= f.label :espaco_id, 'Espaço', :class => 'required' %></td>
+  <td><%= f.collection_select :espaco_id, @espacos, :id, :nome , {:include_blank => true}%>  </td>
+</tr>
+
+
+<tr>
+  <td><%= f.label :categoria,'Categoria', :class => 'required' %></td>
+  <td><%= f.select :categoria, Evento::CATEGORIAS, :include_blank => true %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :tipo_evento_id, 'Tipo de evento', :class => 'required' %></td>
+  <td><%= f.collection_select :tipo_evento_id, @tipos_eventos, :id, :nome, :include_blank => true %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :data_inicio, 'Data de Utilização' , :class => 'required'%></td>
+  <td><%= f.text_field :data_inicio, :size => 12, :class => 'date' %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :horario_inicio, 'Inicia às', :class => 'required' %></td>
+  <td><%= f.select :horario_inicio, time_intervals('08:30', '22:00', 15), :include_blank => true %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :horario_termino, 'Termina às', :class => 'required' %></td>
+  <td><%= f.select :horario_termino, time_intervals('08:30', '22:00', 15), :include_blank => true %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :descricao, 'Descrição', :class => 'required' %></td>
+  <td><%= f.text_area :descricao, :size => '80 x 5' %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :necessidades, 'Quais os materiais/recursos/ serviços da Casa necessários à realização do evento?', :class => 'required' %></td>
+  <td><%= f.text_area :necessidades, :size => '80 x 5' %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :numero_participantes, 'Número de Participantes ', :class => 'required' %></td>
+  <td><%= f.text_field :numero_participantes, :size => '4 ' %></td>
+</tr>
+<tr>
+  <td><%= f.label :proponente, 'Proponente' , :class => 'required'%></td>
+  <td><%= f.text_field :proponente, :size => '80' %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :contato, 'Contato', :class => 'required' %></td>
+  <td><%= f.text_area :contato, :size => '80 x 5' %></td>
+</tr>
+<tr>
+	<td><%= f.label '', '' %></td>
+	<td><%= f.check_box :acceptance %>
+  Declaro que li o <a href="/emprestimos/termo_compromisso" id="link_termo">Termo de Responsabilidade e Compromisso</a> e concordo com todo o seu conteúdo</td>
+</tr>
+
+</table>
+<script>
+jQuery(function($) {	
+	$('#emprestimo_numero_participantes').numeric();
+	$('#emprestimo_acceptance').attr('checked', false);
+});
+</script>

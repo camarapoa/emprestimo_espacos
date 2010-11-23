@@ -1,0 +1,44 @@
+<style>
+#termo {font-size:0.9em}
+#termo p {line-height:20px;  text-align: justify}
+</style>
+
+
+<div id='termo'>
+<p>Eu, <b><%= current_user.nome %>, matrícula <%= current_user.matricula %></b>,  solicito a cedência do espaço conforme dados preenchidos no sistema
+	eletrônico de reserva de espaços da Câmara Municipal de Porto Alegre.
+</p>		
+	
+<p>
+<b>Responsabilizo-me</b> por quaisquer danos causados aos equipamentos, móveis e imóveis da Câmara,
+ e autorizo, desde logo, o lançamento, em DAM (Documento de Arrecadação Municipal) do valor 
+ dos danos porventura causados. 
+</p> 
+ 
+
+<p>
+<b>Responsabilizo-me</b> pela identificação de todo o pessoal de suporte ao evento,  tais como promotores 
+de evento, imprensa, pessoal de filmagem, fotógrafos, garçons, músicos, cantores e outros, bem como
+ pela notificação  da entrada de qualquer equipamento ou material a ser utilizado durante a realização 
+ do evento, à Diretoria de Atividades complementares, sob pena de não ser autorizado o ingresso do pessoal
+  de suporte e de retenção dos materiais para fins de resguardo do patrimônio do Legislativo.  
+</p>
+  
+  
+<p><b>Comprometo-me</b> a apresentar o responsável pelo evento ao Coordenador do Grupo de Eventos desta Câmara Municipal,
+	 com a devida antecedência, para que lhe sejam transmitidas as orientações de funcionamento da Casa, especialmente 
+	 quanto ao impedimento de cobrança de ingressos, conforme Art. 39 da Resolução de Mesa nº 370 de 17 de julho de 2007.
+</p>	  
+	 
+<p>	 
+<b>Responsabilizo-me</b> pelo cumprimento do Regimento e demais normas internas da Câmara Municipal de Porto Alegre, 
+especialmente quanto ao cumprimento do horário previsto no ofício de solicitação, que não ultrapassará
+ as 22:00 (vinte duas horas), e que após este horário as portas serão fechadas e as luzes apagadas,
+  pela limpeza e pela proibição do fumo no local utilizado, bem como obrigo-me a seguir todas as orientações 
+  transmitidas pela Equipe de Eventos ou por membros da Segurança da Casa.
+</p>  
+
+<p>Porto Alegre, <%= DateTime.now.strftime("%d/%m/%Y")%>.
+</p>	
+</div>
+  

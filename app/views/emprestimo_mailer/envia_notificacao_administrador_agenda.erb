@@ -1,0 +1,53 @@
+<style>
+  body, table{ font-family: verdana; font-size: 11px; }
+</style>
+
+<p>Prezado(a) Administrador(a) da Agenda Única:</p>
+
+Foi registrada no sistema a seguinte solicitação de empréstimo de espaço da Casa:
+
+<br/>
+<br/>
+<table >	
+	<tr>
+    <th align='left'>Local:</th>
+    <td><%= @emprestimo.espaco.nome %></td>
+  </tr>  	
+  <tr>
+    <th align='left'>Data de Utilização:</th>
+    <td><%= "#{@emprestimo.data_inicio.strftime('%d/%m/%Y')} - de #{@emprestimo.horario_inicio} às #{@emprestimo.horario_termino}" %></td>
+  </tr>
+  <tr>
+    <th align='left'>Descrição:</th>
+    <td><%= @emprestimo.descricao %></td>
+  </tr>   
+  <tr>
+    <th align='left'>Necessidades:</th>
+    <td><%= @emprestimo.necessidades %></td>
+  </tr>     
+  <tr>
+    <th align='left'>Contato:</th>
+    <td><%= @emprestimo.contato %></td>
+  </tr>     
+  <tr>
+    <th align='left'>Proponente:</th>
+    <td><%= @emprestimo.proponente %></td>
+  </tr>       
+  <tr>
+    <th align='left'>Funcionario Solicitante:</th>
+    <td><%= @emprestimo.funcionario_solicitante.nome %></td>
+  </tr>  
+  <tr>
+    <th align='left'>Setor Solicitante:</th>
+    <td><%= @emprestimo.setor_solicitante.nome %></td>
+  </tr>    
+</table>  
+
+
+<br/>
+<br/>
+Para maiores informações, consulte a Agenda Única.
+
+<br/>
+<br/>
+<span style='font-size:9px'>desenvolvido pela Assessoria de Informática da CMPA - 2010</span>

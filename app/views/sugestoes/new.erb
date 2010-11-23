@@ -1,0 +1,22 @@
+<div class='box no-box'>
+  <h3>Registro de Sugestão</h3>
+  <div>
+   <% form_for @sugestao do |f| %>
+      
+    <%= f.error_messages %>
+			<table class='fieldset'>
+			<tr>
+			  <td><%= f.label :sugestao, 'Mensagem', :class => 'required' %></td>
+			  <td><%= f.text_area :sugestao, :size => '80x5'%>  </td>
+			</tr>
+			</table>
+
+      
+      
+      <%= f.submit 'Enviar mensagem', :disable_with => 'Aguarde...' %>
+      <ul class='toolbar right'>
+        <li><%= link_to 'Cancelar', session[:eventos_uri] || sugestoes_path, :icon => :arrow_left %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

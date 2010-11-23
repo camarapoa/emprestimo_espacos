@@ -1,0 +1,110 @@
+# Logfile created on Mon Jun 14 11:28:53 -0300 2010
+
+Processing EmprestimosController#index (for 127.0.0.1 at 2010-08-12 18:33:58) [GET]
+Rendering template within layouts/application
+Rendering emprestimos/index
+Warning: SQLServer :lock option 'nil' not supported
+Warning: SQLServer :lock option 'nil' not supported
+Completed in 219ms (View: 94, DB: 16) | 200 OK [http://localhost/]
+
+
+Processing EmprestimosController#new (for 127.0.0.1 at 2010-08-12 18:34:06) [GET]
+Warning: SQLServer :lock option 'nil' not supported
+Rendering template within layouts/application
+Rendering emprestimos/new
+Warning: SQLServer :lock option 'nil' not supported
+Completed in 47ms (View: 16, DB: 31) | 200 OK [http://localhost/emprestimos/new]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-08-12 18:34:08) [DELETE]
+Redirected to http://localhost:3000/
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing EmprestimosController#index (for 127.0.0.1 at 2010-08-12 18:34:08) [GET]
+Redirected to http://localhost:3000/session/entrar
+Filter chain halted as [:cmpa_authenticate] rendered_or_redirected.
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-08-12 18:34:08) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 62ms (View: 62, DB: 0) | 200 OK [http://localhost/session/entrar]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-08-12 18:34:12) [POST]
+  Parameters: {"login"=>"chuvisco", "password"=>"130493"}
+Warning: SQLServer :lock option 'nil' not supported
+Rendering sessions/lotacoes_temporarias
+Completed in 1281ms (View: 16, DB: 0) | 200 OK [http://localhost/session]
+
+
+Processing SessionsController#set_lotacao_temporaria (for 127.0.0.1 at 2010-08-12 18:34:16) [GET]
+  Parameters: {"lotacao_temporaria_id"=>"1726"}
+Warning: SQLServer :lock option 'nil' not supported
+Redirected to http://localhost:3000/
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/session/set_lotacao_temporaria/1726]
+
+
+Processing SessionsController#set_lotacao_temporaria (for 127.0.0.1 at 2010-08-12 18:34:16) [GET]
+  Parameters: {"lotacao_temporaria_id"=>"1726"}
+Warning: SQLServer :lock option 'nil' not supported
+Redirected to http://localhost:3000/
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/session/set_lotacao_temporaria/1726]
+
+
+Processing EmprestimosController#index (for 127.0.0.1 at 2010-08-12 18:34:16) [GET]
+Rendering template within layouts/application
+Rendering emprestimos/index
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/]
+
+
+Processing EmprestimosController#new (for 127.0.0.1 at 2010-08-12 18:34:17) [GET]
+Warning: SQLServer :lock option 'nil' not supported
+Rendering template within layouts/application
+Rendering emprestimos/new
+Warning: SQLServer :lock option 'nil' not supported
+Completed in 47ms (View: 16, DB: 16) | 200 OK [http://localhost/emprestimos/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-12 18:34:29) [GET]
+
+ActionController::RoutingError (No route matches "/images/jquery-ui/ui-icons_d8e7f3_256x240.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-12 18:34:29) [GET]
+
+ActionController::RoutingError (No route matches "/images/jquery-ui/ui-bg_glass_85_dfeffc_1x400.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-12 18:34:30) [GET]
+
+ActionController::RoutingError (No route matches "/images/jquery-ui/ui-bg_glass_75_d0e5f5_1x400.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing EmprestimosController#create (for 127.0.0.1 at 2010-08-12 18:34:44) [POST]
+  Parameters: {"commit"=>"Registrar a solicitação", "emprestimo"=>{"numero_participantes"=>"23", "horario_termino"=>"11:15", "categoria"=>"interno", "horario_inicio"=>"08:30", "acceptance"=>"1", "contato"=>"teste", "data_inicio"=>"25/10/2010", "tipo_evento_id"=>"14", "espaco_id"=>"15", "proponente"=>"testeteste", "necessidades"=>"teste", "descricao"=>"teste"}}
+Warning: SQLServer :lock option 'nil' not supported
+Warning: SQLServer :lock option 'nil' not supported
+Warning: SQLServer :lock option 'nil' not supported
+Sent mail to 
+Redirected to http://localhost:3000/emprestimos
+Completed in 5734ms (DB: 47) | 302 Found [http://localhost/emprestimos]
+
+
+Processing EmprestimosController#index (for 127.0.0.1 at 2010-08-12 18:34:50) [GET]
+Rendering template within layouts/application
+Rendering emprestimos/index
+Warning: SQLServer :lock option 'nil' not supported
+Warning: SQLServer :lock option 'nil' not supported
+Completed in 47ms (View: 47, DB: 0) | 200 OK [http://localhost/emprestimos]

@@ -1,0 +1,108 @@
+<div>
+	<p>Consulte aqui as regras para cedência de espaço na CMPA</p>	
+	<ul>		
+		<li><%= link_to "Resolução de Mesa nº 370  de 17/07/07 (Dependências Passíveis de Cedência)", "/documentos/normas/RM370_17072007.pdf", :target => '_blank', :icon => 'page-white-acrobat' %></li>
+		<li><%= link_to "Resolução de Mesa nº 386  de 24/01/08 (Utilização de Dependências e Serviços)", "/documentos/normas/RM386_24012008.pdf",  :target => '_blank', :icon => 'page-white-acrobat' %></li>
+		<li><%= link_to "Resolução de Mesa nº 400  de 15/09/08 (Utilização das Salas de Reuniões)", "/documentos/normas/RM400_15092008.pdf",  :target => '_blank', :icon => 'page-white-acrobat' %></li>
+	</ul>	
+</div>
+
+<br/>
+<p><%= link_to "registrar solicitação", new_emprestimo_path, :icon => 'add' %></p>
+<br/>
+<%= flash_messages flash %>
+
+
+<% if @emprestimos.any? %>	
+	<br/>
+	<br/>
+	<h5>Solicitações pendentes/em atendimento</h5>
+  <table class='list'>
+    <thead>
+      <tr>
+      	<th style='text-align:left'>Status</th>
+        <th style='text-align:left'>Local</th>
+        <th style='text-align:left'>Dt Utilização</th>
+        <th style='text-align:left'>Dt. Solic.</th>
+        <th style='text-align:left'>Solicitante</th>        
+        <th class='links'>&nbsp;</th>
+        <th class='links'>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @emprestimos.each do |emprestimo| %>      
+        <tr class="<%= cycle 'odd', 'even' %>">
+        	<td><span class='<%= class_by_status(emprestimo.status_real)%>'><%= emprestimo.status.humanize %></span></td>        	
+          <td><%= emprestimo.espaco.nome %></td>          
+          <td><%= "#{emprestimo.data_inicio.strftime('%d/%m/%Y')} - de #{emprestimo.horario_inicio} às #{emprestimo.horario_termino}" %></td>
+          <td><%= emprestimo.created_on.strftime('%d/%m/%Y %H:%M:%S') %></td>
+          <td><%= emprestimo.funcionario_solicitante.nome %></td>
+          <td class='links'>
+            <ul class='hnav'> 
+            	<li><%= link_to 'detalhes', emprestimo, :icon => 'show', :title => "detalhes do empréstimo" %></li>             
+            </ul>
+          </td>
+          <td class='links'>
+            <ul class='hnav'> 
+            	<% if emprestimo.status == 'por_atender' %>
+            		<li><%= link_to 'cancelar solicitacao', cancelar_emprestimo_path(emprestimo), :method => :put,  :icon => 'cancel', :title => "detalhes do empréstimo" %></li>             
+            	<% else %>
+            		<li><%= link_to 'solicitar cancelamento', solicitar_cancelamento_emprestimo_path(emprestimo), :method => :put, :icon => 'cancel', :title => "detalhes do empréstimo" %></li>             
+            	<% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>  
+<p>Nenhum empréstimo ativo encontrado</p>  
+<% end %>
+
+<% if @emprestimos_passados.any? %>	
+	<br/>
+	<br/>
+
+	<h5>Solicitações Encerradas/Antigas</h5>
+  <table class='list'>
+    <thead>
+      <tr> 
+      	<th style='text-align:left'>Status</th>     	
+        <th style='text-align:left'>Local</th>
+        <th style='text-align:left'>Dt Utilização</th>
+        <th style='text-align:left'>Dt. Solic.</th>
+        <th style='text-align:left'>Solicitante</th>        
+        <th class='links'>&nbsp;</th>
+        <th class='links'>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @emprestimos_passados.each do |emprestimo| %>
+        <tr class="<%= cycle 'odd', 'even' %>">        	
+        	<td><span class='<%= class_by_status(emprestimo.status_real)%>'><%= emprestimo.status_real.humanize   %></span></td>          
+          <td><%= emprestimo.espaco.nome %></td>          
+          <td><%= "#{emprestimo.data_inicio.strftime('%d/%m/%Y')} - de #{emprestimo.horario_inicio} às #{emprestimo.horario_termino}" %></td>
+          <td><%= emprestimo.created_on.strftime('%d/%m/%Y %H:%M:%S') %></td>
+          <td><%= emprestimo.funcionario_solicitante.nome %></td>
+          <td class='links'>
+            <ul class='hnav'> 
+            	<li><%= link_to 'detalhes', emprestimo, :icon => 'show', :title => "detalhes do empréstimo" %></li>             
+            </ul>
+          </td>
+          <td class='links'>
+            <ul class='hnav'> 
+            	<% if emprestimo.status == 'por_atender '%>
+								<li><%= link_to 'cancelar solicitacao', emprestimo, :icon => 'cancel', :title => "detalhes do empréstimo" %></li>             
+							<% end %>			
+  						<% if !['cancelado', 'nao_autorizado'].include?(emprestimo.status)  && (emprestimo.data_inicio > Time.now)  %>
+      					<li><%= link_to 'solicitar cancelamento', emprestimo, :icon => 'cancel', :title => "detalhes do empréstimo" %></li>             
+    					<% end %>	
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>  
+<p>Nenhum empréstimo antigo encontrado</p>  
+<% end %>

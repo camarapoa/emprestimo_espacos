@@ -1,0 +1,47 @@
+<div class='box no-box'>
+	<h3>Nova Solicitação de Espaço</h3>
+	<div>
+	  <% form_for @emprestimo do |f| %>
+	    <%= render 'form', :f => f %>
+	    <%= f.submit 'Registrar a solicitação', :disable_with => 'Aguarde...', :id => 'registro_button' %>
+	      <ul class='toolbar right'>
+	      	<li><%= link_to 'Cancelar', emprestimos_path, :icon => 'arrow-left' %></li>
+	    	</ul>
+	  <% end %>
+  </div>
+</div>
+<script>
+
+jQuery(function($) {		
+	$("#registro_button").attr("disabled", "disabled");
+    $("#emprestimo_acceptance").click(function() {
+        var checked_status = this.checked;
+        if (checked_status == true) {
+            $("#registro_button").removeAttr("disabled");
+        }
+        else {
+            $("#registro_button").attr("disabled", "disabled");
+        }
+    });	
+    
+    var dialog = $('<div>')
+      .dialog({
+        title: 'Termo de Responsabilidade e Compromisso',
+        autoOpen: false,
+        width: 800,
+        height: 550,
+        modal: true,
+        resizable: false,
+        buttons: { Fechar: function() { $(this).dialog('close'); } }
+      });
+    
+    $('#link_termo').click(function() {
+      $.get(this.href, {}, function(data) { dialog.html(data).dialog('open'); });
+      
+      return false;
+    });
+  });
+  
+</script>        
+
+
